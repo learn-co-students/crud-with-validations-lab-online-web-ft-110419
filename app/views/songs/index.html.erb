@@ -2,14 +2,14 @@
 
 <table>
     <tr>
-        <td>Song Title</td>
-        <td>Delete</td>
+        <th>Song Title</th>
+        <th>Delete</th>
     </tr>
+
     <% @songs.each do |song| %>
         <tr>
             <td><%= song.title %></td>
-            <td><%= link_to "Delete", song, method: :delete, data: { confirm: "Are your sure?" } %>
-            </td>
+            <td><%= link_to "Delete", song, method: :delete, data: { confirm: "Are your sure?" } %></td>
         </tr>
     <% end %>
 </table>
