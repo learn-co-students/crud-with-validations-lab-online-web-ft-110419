@@ -1,0 +1,25 @@
+<h1>Edit a Song</h1>
+<% if @song.errors.any? %>
+	<div id = "error_explanation">
+	<h3>There was a problem editting the song - please try again. Here are the errors you got:</h3>
+	<ol>
+	<% @song.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+</ol>
+<% end %>
+</div>
+
+<%= form_for @song do |form| %>
+	<p><%= form.label :title, "Song Title:" %>
+	<%= form.text_field :title %></p>
+	<p><%= form.label :artist_name, "Song's Artist:" %>
+		<%= form.text_field :artist_name %></p>
+	<p><%= form.label :genre, "Song's Genre:" %>
+		<%= form.text_field :genre %>
+	<p><%= form.label :released, "Has the song been released yet?" %>
+		<%= form.check_box :released %></p>
+	<p><%= form.label :release_year, "Release Year (leave blank if not released yet):" %>
+		<%= form.number_field :release_year, :min => 1900, :max => Time.now.year %></p>
+	<%= form.submit "Edit Song" %>
+<% end %>
